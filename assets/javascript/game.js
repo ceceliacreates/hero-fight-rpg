@@ -28,9 +28,11 @@ const rogue = {
 };
 let currentPlayer;
 let currentDefender;
+let playerSelected = false;
 //select a character
 //on click of class player
 $(".player").on("click", function() {
+  if (playerSelected == false) {
   //assigns character stats from object to currentPlayer
   currentPlayer = this.id;
   switch (currentPlayer) {
@@ -54,30 +56,35 @@ $(".player").on("click", function() {
   //moves remaining characters to enemies to fight
   $("#enemies").append($("#characters"));
   //assigns enemy class to remaining characters
-  $("#enemies img").addClass("enemy");
+  $("#enemies img").removeClass("player").addClass("enemy");
+  playerSelected = true;
+}
 });
+
+
 //select a defender
 $(".enemy").on("click", function() {
   currentDefender = this.id;
-  switch (currentDefender) {
-    case wizard.name:
-      currentDefender = wizard;
-      break;
-    case knight.name:
-      currentDefender = knight;
-      break;
-    case monster.name:
-      currentDefender = monster;
-      break;
-    case rogue.name:
-      currentDefender = rogue;
+ // switch (currentDefender) {
+   // case wizard.name:
+     // currentDefender = wizard;
+ //     break;
+ //   case knight.name:
+ //     currentDefender = knight;
+   //   break;
+ //   case monster.name:
+   //   currentDefender = monster;
+   //   break;
+  //  case rogue.name:
+  //    currentDefender = rogue;
   }
   //moves image of clicked character to defender div
-  let defenderImage = $(`#${currentDefender.name}`);
-  $("#defender").append(defenderImage);
+  //let defenderImage = $(`#${currentDefender.name}`);
+ // $("#defender").append(defenderImage);
   //doesn't allow other enemies to be selected once defender is in defender zone
-  defenderSelected = true;
-});
+ // defenderSelected = true;
+}
+);
 
 //attack button
 //if no defender, displays message that a defender must be selected
