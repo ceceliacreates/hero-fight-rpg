@@ -35,19 +35,19 @@ $(".player").on("click", function() {
   if (playerSelected == false) {
   //assigns character stats from object to currentPlayer
   currentPlayer = this.id;
-  switch (currentPlayer) {
-    case wizard.name:
-      currentPlayer = wizard;
-      break;
-    case knight.name:
-      currentPlayer = knight;
-      break;
-    case monster.name:
-      currentPlayer = monster;
-      break;
-    case rogue.name:
-      currentPlayer = rogue;
-  }
+//  switch (currentPlayer) {
+ //   case wizard.name:
+ //     currentPlayer = wizard;
+ //     break;
+  //  case knight.name:
+  //    currentPlayer = knight;
+  //    break;
+  //  case monster.name:
+  //    currentPlayer = monster;
+  //    break;
+  //  case rogue.name:
+  //    currentPlayer = rogue;
+ // }
   //moves selected character to player area
   let playerImage = $(`#${currentPlayer.name}`);
   $("#player").append(playerImage);
@@ -83,7 +83,7 @@ $(".enemy").on("click", function() {
  // $("#defender").append(defenderImage);
   //doesn't allow other enemies to be selected once defender is in defender zone
  // defenderSelected = true;
-}
+//}
 );
 
 //attack button
