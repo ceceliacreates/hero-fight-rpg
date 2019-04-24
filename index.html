@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Schoolbell"
+      rel="stylesheet"
+    />
     <script
       src="https://code.jquery.com/jquery-3.4.0.min.js"
       integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
@@ -13,25 +23,68 @@
     ></script>
   </head>
   <body>
-    <div id="characters">
-      <h2 id="choose">Choose a Character</h2>
-      <img src="assets/images/150.png" alt="wizard" class="player" id="wizard">
-      <img src="assets/images/150.png" alt="knight" class="player" id="knight">
-      <img src="assets/images/150.png" alt="rogue" class="player" id="rogue">
-      <img src="assets/images/150.png" alt="monster" class="player" id="monster">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+      <div id="header"><h1>Hero Fight!</h1></div>
+      </div>
     </div>
-    <div id="player">
-      <h2>Your Character</h2>
+    <div class="row">
+      <div class="col-8">
+      <div id="characters">
+        <h2 id="choose">Choose a Character</h2>
+        <img
+          src="assets/images/wizard.png"
+          alt="wizard"
+          class="character"
+          id="wizard"
+        />
+        <img
+          src="assets/images/knight.png"
+          alt="knight"
+          class="character"
+          id="knight"
+        />
+        <img
+          src="assets/images/rogue.jpg"
+          alt="rogue"
+          class="character"
+          id="rogue"
+        />
+        <img
+          src="assets/images/monster.png"
+          alt="monster"
+          class="character"
+          id="monster"
+        />
+      </div>
+      </div>
+      <div class="col-4">
+      <div id="player">
+        <h2>Your Character</h2>
+      </div>
+      </div>
     </div>
-    <div id="enemies">
-      <h2>Enemies to Fight</h2>
+    <div class="row">
+      <div class="col-6">
+      <div id="enemies">
+        <h2>Enemies to Fight</h2>
+      </div>
     </div>
-    <button id="attack">Attack</button>
-    <div id="defender">
-      <h2>Defender</h2>
+    <div class="col-6">
+      <div id="defender">
+        <h2>Defender</h2>
+      </div>
+      <button class="btn btn-danger" id="attack">Attack!</button>
     </div>
-    <div id="fight"></div>
-    <div id="restart"></div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div id="fight"></div>
+      <div id="restart"></div>
+    </div>
+    </div>
+    </div>
     <script src="assets/javascript/game.js"></script>
   </body>
 </html>
