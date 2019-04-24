@@ -37,9 +37,10 @@ let currentDefenderAttack;
 let currentDefenderCounter;
 let playerSelected = false;
 let defenderSelected = false;
+let enemiesDefeated = 0;
 //select a character
 //on click of class player
-$(".player").on("click", function() {
+$(".character").on("click", function() {
   if (playerSelected == false) {
     //assigns character stats from object to currentPlayer
     currentPlayer = this.id;
@@ -59,14 +60,13 @@ $(".player").on("click", function() {
     //moves selected character to player area
     let playerImage = $(`#${currentPlayer.name}`);
     $("#player").append(playerImage);
+    playerImage.removeClass("character").addClass("player");
     //empties select a character div
-    $("#choose").empty();
-    //moves remaining characters to enemies to fight
-    $("#enemies").append($("#characters"));
+    $("#choose").empty()
     //assigns enemy class to remaining characters
-    $("#enemies img")
-      .removeClass("player")
-      .addClass("enemy");
+    $(".character").addClass("enemy");
+    //moves remaining characters to enemies to fight
+    $("#enemies").append($(".enemy"));
     playerSelected = true;
     //sets current player stats
     currentPlayerHealth = currentPlayer.health;
@@ -119,21 +119,28 @@ $("#attack").on("click", function() {
     //check if defender was defeated
     //if defender health < 1, remove defender image and allow new defender to be selected.
     if (currentDefenderHealth < 1) {
+      if (enemiesDefeated === 2) {
+        $("#defender").html("<h2>Defender</h2>");
+        $("#fight").html("<p>You won! Refresh for a new game!</p>");
+      }
+      else {
+      enemiesDefeated ++;
       defenderSelected = false;
-      $("#defender").empty();
+      $("#defender").html("<h2>Defender</h2>");
       $("#fight").html(
         `<p>The ${currentDefender.name} was defeated! Select a new defender!</p>`
       );
+      }
     } else {
       //reduce player health (defender counter attack)
       currentPlayerHealth = currentPlayerHealth - currentDefenderCounter;
       //check if current player was defeated
       //if playerHealth < 1, display lose message and display restart button
       if (currentPlayerHealth < 1) {
+        $("#attack").attr("disabled", true);
         $("#fight").html(
-          `<p>You have been defeated! Click Restart to try again!`
+          `<p>You have been defeated! Refesh to try again!`
         );
-        $("#restart").html("<button>Restart</button>");
       }
       //displays message "You did ${damage} to ${defender}, reducing their health to ${defenderhealth}.
       //They counter-attacked for ${damage} damage, reducing your health to ${playerhealth}.
@@ -144,16 +151,6 @@ $("#attack").on("click", function() {
       }
     }
   }
-  //click handler for restart
-  $("#restart").on("click", "button", function() {
-    //moves all characters back to character div, restores heading, and removes enemy class
-    $("img").addClass("player");
-    $(".player").removeClass("enemy");
-    $("#choose").text("Choose a Character");
-    $("#characters").append(".player");
-    //resets playerSelected and defenderSelected
-    playerSelected = false;
-    defenderSelected = false;
-  });
-});
-//if enemies zone is empty, win the game, display restart option
+
+ });
+
