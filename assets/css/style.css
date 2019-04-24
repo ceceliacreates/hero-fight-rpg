@@ -15,6 +15,7 @@ img {
 h1 {
     font-family: "Schoolbell", cursive;
     font-size: 50pt;
+    color: #DC3545;
 }
 h2 {
     font-family: 'Open Sans Condensed', sans-serif;
@@ -25,4 +26,12 @@ p {
 }
 button {
     margin: 5px 10px;
+}
+body {
+    background: url("../images/Lego\ Bricks\ Background\ For\ lego\ brick\ background.jpg");
+}
+.container {
+    background: white;
+    margin-top: 25px;
+    border: 2px solid black;
 }
